@@ -1,10 +1,13 @@
 # Title of Game
-
+## Sneaky Snake
 Explanation of the game that was built and the deployed link will go here.
 
-# HOW TO PLAY
 
-How to play the game goes here
+
+# HOW TO PLAY
+- Start off as a one cell snake, navigate around obticles to pick up grow pellets.
+- Try and collect as many gro pellets as possible while avoiding obstacle or walls.
+- If the snake crashes againts the walls or obstacles the game is over.
 
 ## Start Up Screen:
 Images of the start up screen go here 
@@ -20,7 +23,7 @@ Other install instructions will go here
 
 
 # HOW IT WORKS
-How the game works will go here
+Use W,A,S,D or Up, Down, Left, Right arrow keys.
 Code snippets go here
 
 
