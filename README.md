@@ -31,7 +31,7 @@ Use W,A,S,D or Up, Down, Left, Right arrow keys.
 # PROCESS WORK
 
 ## Initial Wireframes:
-<img src="./Images/WireFrame.png" alt="WireFrame" width="400px">
+<img src="./Images/WireFrame.png" alt="WireFrame" width="800px">
 
 ## Scratch Work:
 
