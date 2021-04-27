@@ -2,17 +2,19 @@ const canvas = document.querySelector('#game');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let ctx = canvas.getContext('2d');
-const scale = 30;
+let speed = 5;
+const grid = 30;
+const scale = canvas.width / grid;
 const rows = canvas.height / scale;
 const columns = canvas.width / scale;
 
 
 // ====================== Snake ======================= //
 function Snake() {
-    this.x = 0;
-    this.y = 0;
-    this.xSpeed = scale * 1;
-    this.ySpeed = 0;
+    this.x = scale * 15;
+    this.y = scale * 15;
+    this.xSpeed = 0;
+    this.ySpeed = scale * -1;
     this.alive = true;
     this.render = function() {
         ctx.fillStyle = 'rgb(204, 213, 230)';
@@ -25,21 +27,27 @@ function Snake() {
 }
 
 
-function drawSnake() {
-    snake = new Snake();
-    snake.render();
-    window.setInterval(function() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        snake.loop();
-        snake.render();
-    }, 120);
-};
+
 
 
 
 // ====================== Grow Pellets ======================= //
 
-
+function Pellet() {
+    this.x;
+    this.y;
+    
+    this.emptyCell = function() {
+        this.x = (Math.floor(Math.random() * columns - 1) + 1) * scale;
+        this.y = (Math.floor(Math.random() * rows - 1) + 1) * scale;
+    
+    }
+    
+    this.render = function() {
+        ctx.fillStyle = 'rgb(250, 244, 158)';
+        ctx.fillRect(this.x, this.y, scale, scale)
+    }
+    }
 
 
 
@@ -50,7 +58,6 @@ function drawSnake() {
 // ====================== Movement ======================= //
 
 function movementHandler(e){
-    //if key press matches "w,a,s,d" move char up, down, left right
     if(e.which == 83 || e.which == 40){
         snake.xSpeed = 0;
         snake.ySpeed = scale * 1;
@@ -63,15 +70,36 @@ function movementHandler(e){
     }else if (e.which == 68 || e.which == 39){
         snake.xSpeed = scale * 1;
         snake.ySpeed = 0;
+    } else if (e.which == 16){
+        snake.xSpeed = 0;
+        snake.ySpeed = 0;
     } else if (e.which == 27){
-        snake.x = 100;
-        snake.y = 200;
-        ogre.alive = true;
+        snake.x = scale * 15;
+        snake.y = scale * 15;
+        pellet.emptyCell();
+        pellet.render();
     }
 }
 
 
 
+
+// ====================== Draw Game ======================= //
+
+
+function drawGame() {
+    snake = new Snake();
+    pellet = new Pellet();
+    pellet.emptyCell();
+
+    window.setInterval(function() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pellet.render();
+        snake.loop();
+        snake.render();
+
+    }, 1000 / speed);
+};
 
 
 
@@ -88,7 +116,7 @@ function movementHandler(e){
 
 function deadSnake() {
         snake.clearRect();
-        startScreen.style.zIndex = '2';
+        startScreen.style.zIndex = '3';
 
 }
 
@@ -102,7 +130,7 @@ let startScreen = document.querySelector('#startScreen')
 
 startButton.addEventListener('click', function() {
     startScreen.style.zIndex = '0';
-    drawSnake();
+    drawGame();
     window.addEventListener('keydown', movementHandler, false);
 
 });
