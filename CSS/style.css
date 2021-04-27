@@ -2,7 +2,11 @@
 
 body {
     margin: 0;
+    /* overflow: hidden; */
+    /* background: rgb(59, 84, 131); */
+
 }
+
 
 .container {
     position: relative;
@@ -13,6 +17,7 @@ canvas {
     background: rgb(116, 111, 111);
     position: absolute;
     z-index: 2;
+    /* border: 10px solid rgb(233, 143, 143); */
 }
 
 #startScreen {
@@ -21,8 +26,7 @@ canvas {
     position: absolute;
     margin: 11vw 0 0 0;
     z-index: 3;
-    /* width: 1000px;
-    height: 500px; */
+    width: 100%;
     background: rgb(204, 213, 230);
     padding: 50px 0 0 0;
 }
