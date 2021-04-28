@@ -35,9 +35,21 @@ h1 {
     font-size: 10em;
 }
 
-#startButton {
+#startButton,
+#resetButton {
     font-size: 4em;
     border-radius: 50px;
     margin: 50px 0 50px 0;
     width: 350px;
+}
+
+#reset {
+    font-family: 'Bebas Neue', cursive;
+    text-align: center;
+    position: absolute;
+    margin: 11vw 0 0 0;
+    z-index: 1;
+    width: 100%;
+    background: rgb(204, 213, 230);
+    padding: 50px 0 0 0;
 }
