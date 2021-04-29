@@ -34,9 +34,9 @@
 - [x] What did you achieve yesterday?
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
-1. RESPONSE
-2. RESPONSE
-3. RESPONSE
+1. Pellet randomly spawns after snake eats it. Snake grows, and added snake on snake collision. Added game over screen with score and time. 
+2. Add speed variable that increases over time or the more pellets you eat
+3. Reseting the game would increase the speed making it unplayable. Found I had to clearInterval on my draw game function.
 
 # Friday
 - [x] What did you achieve yesterday?
