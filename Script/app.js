@@ -6,7 +6,7 @@ const grid = 40;
 const scale = canvas.width / grid;
 const rows = canvas.height / scale;
 const columns = canvas.width / scale;
-let speed = 15;
+let speed = 10;
 let startButton = document.querySelector('#startButton');
 let startScreen = document.querySelector('#startScreen');
 let resetButton = document.querySelector('#resetButton');
@@ -17,8 +17,8 @@ let endDate = new Date();
 
 // ====================== Snake ======================= //
 function Snake() {
-    this.x = scale * 25;
-    this.y = scale * 25;
+    this.x = scale * 20;
+    this.y = scale * 20;
     this.xSpeed = 0;
     this.ySpeed = -scale;
     this.alive = true;
@@ -42,13 +42,13 @@ function Snake() {
     }
     this.border = function() {
         if (this.x > canvas.width) {
-            this.x = 0;
+            this.alive = false;
         } else if (this.x < 0) {
-            this.x = canvas.width
+            this.alive = false;
         } else if (this.y > canvas.height) {
-            this.y = 0;
+            this.alive = false;
         } else if (this.y < 0) {
-            this.y = canvas.height
+            this.alive = false;
         }
     }
     this.grow = function() {
@@ -160,8 +160,6 @@ let interval = setInterval(function(event) {
 
 
 
-
-
 // ====================== Speed ======================= //
 
 
@@ -196,12 +194,13 @@ function deadSnake() {
 // ====================== Start Button ======================= //
 
 
-
-
 startButton.addEventListener('click', function() {
     startScreen.style.zIndex = '0';
     drawGame();
     window.addEventListener('keydown', movementHandler, false);
+    canvas.style.border = '10px solid rgb(233, 143, 143)';
+    canvas.width = window.innerWidth - 20;
+    canvas.height = window.innerHeight - 20;
 
 });
 
@@ -215,3 +214,11 @@ resetButton.addEventListener('click', function() {
     window.addEventListener('keydown', movementHandler, false);
 
 });
+
+
+
+
+
+// ====================== Testing ======================= //
+
+
