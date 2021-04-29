@@ -11,7 +11,9 @@ let startButton = document.querySelector('#startButton');
 let startScreen = document.querySelector('#startScreen');
 let resetButton = document.querySelector('#resetButton');
 let resetScreen = document.querySelector('#resetScreen');
-let score = document.querySelector('#pelletH2');
+let startDate = new Date();
+let endDate = new Date();
+
 
 // ====================== Snake ======================= //
 function Snake() {
@@ -26,7 +28,7 @@ function Snake() {
         for (let i=0; i<this.body.length; i++) {
 
              ctx.fillStyle = 'rgb(204, 213, 230)';
-             ctx.fillRect(this.body[i].x, this.body[i].y, scale - 2, scale - 2);
+             ctx.fillRect(this.body[i].x, this.body[i].y, scale, scale);
           }
     }
     this.loop = function() {
@@ -50,10 +52,10 @@ function Snake() {
         }
     }
     this.grow = function() {
-        if (this.x < pellet.x + 25&& 
-            this.x + 50 > pellet.x && 
-            this.y < pellet.y + 25&& 
-            this.y + 50> pellet.y) {
+        if (this.x < pellet.x + 15&& 
+            this.x + 15 > pellet.x && 
+            this.y < pellet.y + 15&& 
+            this.y + 15> pellet.y) {
             pellet.emptyCell();
             pellet.render();
             this.eaten++;
@@ -83,16 +85,13 @@ function Pellet() {
 
     this.emptyCell = function() {
         this.x = (Math.floor(Math.random() * columns - 1) + 1) * scale;
-        this.y = (Math.floor(Math.random() * rows - 1) + 1) * scale
+        this.y = (Math.floor(Math.random() * rows - 1) + 1) * scale;
     
     }
     
     this.render = function() {
-        ctx.beginPath();
-        ctx.arc (this.x, this.y, scale - 12, 0, Math.PI * 2, false);
         ctx.fillStyle = 'rgb(250, 244, 158)';
-        ctx.closePath();
-        ctx.fill();
+        ctx.fillRect(this.x, this.y, scale , scale);
     }
     }
 
@@ -137,11 +136,13 @@ function movementHandler(e){
 
 
 function drawGame() {
+    startTime = new Date();
     snake = new Snake();
     pellet = new Pellet();
     pellet.emptyCell();
 let interval = setInterval(function(event) {
     if (snake.alive == false) {
+        endTime = new Date();
         clearInterval(interval);
         deadSnake();
         return;
@@ -176,11 +177,18 @@ let interval = setInterval(function(event) {
 
 
 
+
+
+
 // ====================== Game Over ======================= //
 
 function deadSnake() {
-
-    reset.style.zIndex = '3';
+    let milli = endTime - startTime;
+    let minutes = Math.floor(milli / 60000);
+    let seconds = ((milli % 60000) / 1000).toFixed(0);
+    document.getElementById('pelletsH2').innerHTML = 'Score: ' + (snake.eaten - 1);
+    document.getElementById('timeH2').innerHTML = 'Time: ' + (minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
+    resetScreen.style.zIndex = '3';
 }
 
 
