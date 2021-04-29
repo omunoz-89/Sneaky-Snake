@@ -143,17 +143,18 @@ function drawGame() {
 let interval = setInterval(function(event) {
     if (snake.alive == false) {
         endTime = new Date();
+        resetButton.disabled = false;
         clearInterval(interval);
         deadSnake();
         return;
     } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         pellet.render();
-        snake.loop();
-        snake.render();
+        snake.dead();
         snake.border();
         snake.grow();
-        snake.dead();
+        snake.render();
+        snake.loop();
     }
     }, 1000 / speed);
 };
@@ -195,6 +196,8 @@ function deadSnake() {
 
 
 startButton.addEventListener('click', function() {
+    startButton.disabled = true;
+    resetButton.disabled = true;
     startScreen.style.zIndex = '0';
     drawGame();
     window.addEventListener('keydown', movementHandler, false);
@@ -209,12 +212,12 @@ startButton.addEventListener('click', function() {
 
 
 resetButton.addEventListener('click', function() {
+    resetButton.disabled = true;
     resetScreen.style.zIndex = '1';
     drawGame();
     window.addEventListener('keydown', movementHandler, false);
 
 });
-
 
 
 
