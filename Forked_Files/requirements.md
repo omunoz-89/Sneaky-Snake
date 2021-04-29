@@ -1,15 +1,15 @@
 # Requirements
-- [ ] Name	
-- [ ] Game Name	
-- [ ] Github Link
+- [x] Name	
+- [x] Game Name	
+- [x] Github Link
 - [ ] Live Site	
 - [ ] Regrade	
 - [ ] Status	
-- [ ] Game is playable	
-- [ ] Game is multiplayer 
+- [x] Game is playable	
+- [x] Game is multiplayer 
 (or AI or PVE)
 - [ ] Game is winnable	
-- [ ] Winner/score is displayed (NO ALERTS)	
+- [x] Winner/score is displayed (NO ALERTS)	
 - [ ] Has directions - How to Play	
 - [ ] Readme.md included and filled out	
 - [ ] Appropriate Use of GitHub (`commits`) 	
