@@ -8,13 +8,13 @@
 - [x] Game is playable	
 - [x] Game is multiplayer 
 (or AI or PVE)
-- [ ] Game is winnable	
+- [x] Game is winnable	
 - [x] Winner/score is displayed (NO ALERTS)	
 - [ ] Has directions - How to Play	
-- [ ] Readme.md included and filled out	
-- [ ] Appropriate Use of GitHub (`commits`) 	
-- [ ] Deployed on Github Pages	
-- [ ] DRY (Do Not Repeat Yourself) Code, Good Code Style	
-- [ ] Effort Put into Styling	
-- [ ] Reset button	
-- [ ] Good collision detection/event triggers
+- [x] Readme.md included and filled out	
+- [x] Appropriate Use of GitHub (`commits`) 	
+- [x] Deployed on Github Pages	
+- [x] DRY (Do Not Repeat Yourself) Code, Good Code Style	
+- [x] Effort Put into Styling	
+- [x] Reset button	
+- [x] Good collision detection/event triggers

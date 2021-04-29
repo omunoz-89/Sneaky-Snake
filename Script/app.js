@@ -3,10 +3,10 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let ctx = canvas.getContext('2d');
 const grid = 40;
-const scale = canvas.width / grid;
-const rows = canvas.height / scale;
-const columns = canvas.width / scale;
-let speed = 10;
+const cell = canvas.width / grid;
+const rows = canvas.height / cell;
+const columns = canvas.width / cell;
+let speed = 12;
 let startButton = document.querySelector('#startButton');
 let startScreen = document.querySelector('#startScreen');
 let resetButton = document.querySelector('#resetButton');
@@ -17,10 +17,10 @@ let endDate = new Date();
 
 // ====================== Snake ======================= //
 function Snake() {
-    this.x = scale * 20;
-    this.y = scale * 20;
+    this.x = cell * 20;
+    this.y = cell * 20;
     this.xSpeed = 0;
-    this.ySpeed = -scale;
+    this.ySpeed = -cell;
     this.alive = true;
     this.eaten = 1;
     this.body = [];
@@ -28,10 +28,10 @@ function Snake() {
         for (let i=0; i<this.body.length; i++) {
 
              ctx.fillStyle = 'rgb(204, 213, 230)';
-             ctx.fillRect(this.body[i].x, this.body[i].y, scale, scale);
+             ctx.fillRect(this.body[i].x, this.body[i].y, cell, cell);
           }
     }
-    this.loop = function() {
+    this.move = function() {
         this.x += this.xSpeed;
         this.y += this.ySpeed;
         for (let i=0; i<this.body.length - 1; i++) {
@@ -73,10 +73,6 @@ function Snake() {
 }
 
 
-
-
-
-
 // ====================== Grow Pellets ======================= //
 
 function Pellet() {
@@ -84,30 +80,27 @@ function Pellet() {
     this.y;
 
     this.emptyCell = function() {
-        this.x = (Math.floor(Math.random() * columns - 1) + 1) * scale;
-        this.y = (Math.floor(Math.random() * rows - 1) + 1) * scale;
+        this.x = (Math.floor(Math.random() * columns - 1) + 1) * cell;
+        this.y = (Math.floor(Math.random() * rows - 1) + 1) * cell;
     
     }
     
     this.render = function() {
         ctx.fillStyle = 'rgb(250, 244, 158)';
-        ctx.fillRect(this.x, this.y, scale , scale);
+        ctx.fillRect(this.x, this.y, cell , cell);
     }
-    this.border = function() {
+    this.respawn = function() {
         if (this.x > canvas.width - 20) {
-            this.x = (Math.floor(Math.random() * columns - 1) + 1) * scale;
+            this.x = (Math.floor(Math.random() * columns - 1) + 1) * cell;
         } else if (this.x < 0) {
-            this.x = (Math.floor(Math.random() * columns - 1) + 1) * scale;
+            this.x = (Math.floor(Math.random() * columns - 1) + 1) * cell;
         } else if (this.y > canvas.height - 20) {
-            this.y = (Math.floor(Math.random() * rows - 1) + 1) * scale;
+            this.y = (Math.floor(Math.random() * rows - 1) + 1) * cell;
         } else if (this.y < 0) {
-            this.y = (Math.floor(Math.random() * rows - 1) + 1) * scale;
+            this.y = (Math.floor(Math.random() * rows - 1) + 1) * cell;
         }
     }
     }
-
-
-
 
 
 // ====================== Obstacles ======================= //
@@ -117,11 +110,11 @@ function Pellet() {
 
 //     this.render = function() {
 //         ctx.fillStyle = 'rgb(233, 143, 143)';
-//         ctx.fillRect(150, 300, scale , 150);
-//         ctx.fillRect(150, 300, 150 , scale);
-//         ctx.fillRect(800, 500, scale , 150);
-//         ctx.fillRect(800, 500, 250 , scale);
-//         ctx.fillRect(1050, 500, scale , 150);
+//         ctx.fillRect(150, 300, cell , 150);
+//         ctx.fillRect(150, 300, 150 , cell);
+//         ctx.fillRect(800, 500, cell , 150);
+//         ctx.fillRect(800, 500, 250 , cell);
+//         ctx.fillRect(1050, 500, cell , 150);
 //     }
 //     }
 
@@ -133,24 +126,24 @@ function Pellet() {
 
 function movementHandler(e){
     if(e.which == 87 || e.which == 38){
-        if(snake.ySpeed == scale && snake.eaten > 1)
+        if(snake.ySpeed == cell && snake.eaten > 1)
         return;
         snake.xSpeed = 0;
-        snake.ySpeed = -scale;
+        snake.ySpeed = -cell;
     } else if (e.which == 83 || e.which == 40){
-        if(snake.ySpeed == -scale && snake.eaten > 1)
+        if(snake.ySpeed == -cell && snake.eaten > 1)
         return;
         snake.xSpeed = 0;
-        snake.ySpeed = scale;
+        snake.ySpeed = cell;
     }else if (e.which == 65 || e.which == 37){
-        if(snake.xSpeed == scale && snake.eaten > 1)
+        if(snake.xSpeed == cell && snake.eaten > 1)
         return;
-        snake.xSpeed = -scale;
+        snake.xSpeed = -cell;
         snake.ySpeed = 0;
     }else if (e.which == 68 || e.which == 39){
-        if(snake.xSpeed == -scale && snake.eaten > 1)
+        if(snake.xSpeed == -cell && snake.eaten > 1)
         return;
-        snake.xSpeed = scale;
+        snake.xSpeed = cell;
         snake.ySpeed = 0;
     } else if (e.which == 27){
         snake.alive = false
@@ -177,11 +170,11 @@ let interval = setInterval(function(event) {
     } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         pellet.render();
-        pellet.border();
+        pellet.respawn();
         snake.border();
         snake.grow();
         snake.render();
-        snake.loop();
+        snake.move();
         snake.dead();
         // obs.render();
     }
@@ -243,8 +236,4 @@ resetButton.addEventListener('click', function() {
 });
 
 
-
-
 // ====================== Testing ======================= //
-
-
