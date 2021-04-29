@@ -93,11 +93,37 @@ function Pellet() {
         ctx.fillStyle = 'rgb(250, 244, 158)';
         ctx.fillRect(this.x, this.y, scale , scale);
     }
+    this.border = function() {
+        if (this.x > canvas.width - 20) {
+            this.x = (Math.floor(Math.random() * columns - 1) + 1) * scale;
+        } else if (this.x < 0) {
+            this.x = (Math.floor(Math.random() * columns - 1) + 1) * scale;
+        } else if (this.y > canvas.height - 20) {
+            this.y = (Math.floor(Math.random() * rows - 1) + 1) * scale;
+        } else if (this.y < 0) {
+            this.y = (Math.floor(Math.random() * rows - 1) + 1) * scale;
+        }
+    }
     }
 
 
 
 
+
+// ====================== Obstacles ======================= //
+
+
+// function Obstacles() {
+
+//     this.render = function() {
+//         ctx.fillStyle = 'rgb(233, 143, 143)';
+//         ctx.fillRect(150, 300, scale , 150);
+//         ctx.fillRect(150, 300, 150 , scale);
+//         ctx.fillRect(800, 500, scale , 150);
+//         ctx.fillRect(800, 500, 250 , scale);
+//         ctx.fillRect(1050, 500, scale , 150);
+//     }
+//     }
 
 
 
@@ -139,6 +165,7 @@ function drawGame() {
     startTime = new Date();
     snake = new Snake();
     pellet = new Pellet();
+    // obs = new Obstacles();
     pellet.emptyCell();
 let interval = setInterval(function(event) {
     if (snake.alive == false) {
@@ -150,11 +177,13 @@ let interval = setInterval(function(event) {
     } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         pellet.render();
-        snake.dead();
+        pellet.border();
         snake.border();
         snake.grow();
         snake.render();
         snake.loop();
+        snake.dead();
+        // obs.render();
     }
     }, 1000 / speed);
 };
@@ -165,12 +194,6 @@ let interval = setInterval(function(event) {
 
 
 
-
-
-
-
-
-// ====================== Obstacles ======================= //
 
 
 
