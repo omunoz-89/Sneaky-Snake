@@ -1,5 +1,17 @@
 # Sneaky Snake
-## About
+
+# Table of Contents
+- About
+- How To Play
+- Start Up Screen
+- Future Consideration
+- Technologies
+- Code Snippets
+- Initial Wireframe
+
+
+
+# About
 As my Unit-1 project of General Assembly's SEI course I decided to make the classic snake game using canvas. 
 
 
@@ -10,7 +22,7 @@ Use W,A,S,D or Up, Down, Left, Right arrow keys to move the snake
 - Try and collect as many grow pellets as possible while avoiding the walls and yourself.
 - If the snake crashes againts the walls or itself the game is over.
 
-## Start Up Screen:
+# Start Up Screen:
 <img src="./Images/Startup.png" alt="startup" width="800px">
 
 
