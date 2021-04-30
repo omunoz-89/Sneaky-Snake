@@ -46,3 +46,5 @@
 2. RESPONSE
 3. RESPONSE
 
+1. Learned alot about factory functions and drawing on canvas
+2. I feel like I have a better understanding of JS from when we first started but would like to be more of a pro on all things JS. 
