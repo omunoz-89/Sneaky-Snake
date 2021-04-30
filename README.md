@@ -16,6 +16,8 @@ As my Unit-1 project of General Assembly's SEI course I decided to make the clas
 
 
 # HOW TO PLAY
+[Sneaky-Snake] (https://omunoz-89.github.io/Sneaky-Snake/)
+
 Use W,A,S,D or Up, Down, Left, Right arrow keys to move the snake
 - Start off as a one cell snake, avoid walls and pick up grow pellets.
 - As you pick up grow pellets the snake will grow and another grow pellet will randomly spawn.
