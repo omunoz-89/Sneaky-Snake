@@ -100,6 +100,35 @@ function Snake() {
 
 ```
 
+Movement Handler
+```
+function movementHandler(e){
+    if(e.which == 87 || e.which == 38){
+        if(snake.ySpeed == cell && snake.eaten > 1)
+        return;
+        snake.xSpeed = 0;
+        snake.ySpeed = -cell;
+    } else if (e.which == 83 || e.which == 40){
+        if(snake.ySpeed == -cell && snake.eaten > 1)
+        return;
+        snake.xSpeed = 0;
+        snake.ySpeed = cell;
+    }else if (e.which == 65 || e.which == 37){
+        if(snake.xSpeed == cell && snake.eaten > 1)
+        return;
+        snake.xSpeed = -cell;
+        snake.ySpeed = 0;
+    }else if (e.which == 68 || e.which == 39){
+        if(snake.xSpeed == -cell && snake.eaten > 1)
+        return;
+        snake.xSpeed = cell;
+        snake.ySpeed = 0;
+    } else if (e.which == 27){
+        snake.alive = false
+    } 
+}
+```
+
 ## Initial Wireframes:
 <img src="./Images/WireFrame.png" alt="WireFrame" width="800px">
 
