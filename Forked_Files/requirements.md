@@ -2,7 +2,7 @@
 - [x] Name	
 - [x] Game Name	
 - [x] Github Link
-- [ ] Live Site	
+- [x] Live Site	
 - [ ] Regrade	
 - [ ] Status	
 - [x] Game is playable	
@@ -10,7 +10,7 @@
 (or AI or PVE)
 - [x] Game is winnable	
 - [x] Winner/score is displayed (NO ALERTS)	
-- [ ] Has directions - How to Play	
+- [x] Has directions - How to Play	
 - [x] Readme.md included and filled out	
 - [x] Appropriate Use of GitHub (`commits`) 	
 - [x] Deployed on Github Pages	
