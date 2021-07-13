@@ -1,12 +1,12 @@
-const canvas = document.querySelector('#game');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const canvas = document.querySelector('#game')
+canvas.width = 1280;
+canvas.height = 720;
 let ctx = canvas.getContext('2d');
 const grid = 40;
 const cell = canvas.width / grid;
 const rows = canvas.height / cell;
 const columns = canvas.width / cell;
-let speed = 12;
+let speed = 10;
 let startButton = document.querySelector('#startButton');
 let startScreen = document.querySelector('#startScreen');
 let resetButton = document.querySelector('#resetButton');
